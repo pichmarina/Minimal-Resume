@@ -1,0 +1,69 @@
+{{#section "styles"}}
+<style>
+  .timeline { position:relative; padding-left: 24px; }
+  .timeline::before {
+    content:''; position:absolute; left:0; top:8px; bottom:8px;
+    width:2px; background: #62f5e5;
+  }
+  .timeline-item { position:relative; margin-bottom:32px; }
+  .timeline-item::before {
+    content:''; position:absolute; left:-29px; top:8px;
+    width:12px; height:12px; border-radius:50%;
+    background:#62f5e5; border:2px solid #0d0d0d;
+  }
+  .current-badge {
+    display:inline-block;
+    background: #1e2a10;
+    color: #62f5e5;
+    border:1px solid #4a7c20;
+    font-size:0.72rem;
+    padding:2px 8px;
+    border-radius:20px;
+    margin-left:10px;
+    vertical-align:middle;
+  }
+</style>
+{{/section}}
+
+<h2 class="section-title">Work <span>Experience</span></h2>
+
+<div class="timeline">
+  {{#each experience}}
+    <div class="timeline-item">
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+          <div>
+            <h3 style="font-size:1.1rem; font-weight:600;">
+              {{this.role}}
+              {{#if this.current}}
+                <span class="current-badge">● Current</span>
+              {{/if}}
+            </h3>
+            <p style="color:#62f5e5; font-size:0.9rem; margin-top:2px;">{{this.company}}</p>
+          </div>
+          <span style="color:#888; font-size:0.85rem;">
+            {{yearRange this.startYear this.endYear}}
+          </span>
+        </div>
+
+        <p style="color:#aaa; line-height:1.7; margin-top:14px; font-size:0.95rem;">{{this.description}}</p>
+
+        <div style="margin-top:14px;">
+          {{#each this.highlights}}
+            <span class="tag">{{this}}</span>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{#section "sidebar"}}
+  {{> contact}}
+
+  <div class="card" style="margin-top:16px;">
+    <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#888; margin-bottom:12px;">Total Experience</p>
+    <p style="font-size:2.5rem; font-weight:700; color:#62f5e5;">{{experience.length}}</p>
+    <p style="color:#888; font-size:0.85rem;">Companies worked at</p>
+  </div>
+{{/section}}

@@ -1,0 +1,75 @@
+{{#section "styles"}}
+<style>
+  .hero-name {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+  .hero-name span { color: #62f5e5; }
+  .edu-item { display:flex; gap:16px; align-items:flex-start; margin-bottom:20px; }
+  .edu-dot { width:10px; height:10px; border-radius:50%; background:#62f5e5; margin-top:7px; flex-shrink:0; }
+</style>
+{{/section}}
+
+{{#if error404}}
+<div style="background: #1f0a0a; border:1px solid #7c2020; border-radius:8px; padding:14px; margin-bottom:24px; color:#ff6b6b;">
+  ⚠️ Page not found — redirected to home.
+</div>
+{{/if}}
+
+<section style="padding: 20px 0 50px;">
+  <p style="color:#62f5e5; font-size:0.85rem; margin-bottom:16px;">Hello, world. I'm —</p>
+  <h1 class="hero-name">
+    Pichmarina<br><span>El.</span>
+  </h1>
+  <p style="color:#888; font-size:1.1rem; margin-top:20px; max-width:480px; line-height:1.7;">
+    {{title}}
+  </p>
+
+  <div style="display:flex; gap:12px; margin-top:30px; flex-wrap:wrap;">
+    <a href="/experience" style="background:#62f5e5; color:#0d0d0d; padding:10px 22px; border-radius:8px; font-weight:600; font-size:0.9rem; text-decoration:none;">View Experience →</a>
+    <a href="/projects" style="border:1px solid #2a2a2a; color:#e8e8e8; padding:10px 22px; border-radius:8px; font-size:0.9rem; text-decoration:none;">See Projects</a>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">About <span>Me</span></h2>
+  <div class="card">
+    <p style="line-height:1.8; color:#aaa;">{{bio}}</p>
+  </div>
+</section>
+
+<section style="margin-top:40px;">
+  <h2 class="section-title">Edu<span>cation</span></h2>
+
+  {{#each education}}
+    <div class="edu-item">
+      <div class="edu-dot"></div>
+      <div>
+        <p style="font-weight:600; font-size:1rem;">{{this.degree}}</p>
+        <p style="color:#888; font-size:0.9rem;">{{this.school}} · {{this.year}}</p>
+
+        {{#if this.honors}}
+          <span class="tag" style="margin-top:6px; display:inline-block;">🏅 With Honors</span>
+        {{/if}}
+      </div>
+    </div>
+  {{/each}}
+
+</section>
+
+{{#section "sidebar"}}
+  {{> contact}}
+
+  <div class="card" style="margin-top:16px;">
+    <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#888; margin-bottom:14px;">Quick Stats</p>
+    <p style="font-size:2rem; font-weight:700; color:#62f5e5;">1+</p>
+    <p style="color:#888; font-size:0.85rem;">Years of Experience</p>
+    <hr style="border-color:#2a2a2a; margin:14px 0;">
+    <p style="font-size:2rem; font-weight:700; color:#62f5e5;">{{projects.length}}</p>
+    <p style="color:#888; font-size:0.85rem;">Open Source Projects</p>
+    <hr style="border-color:#2a2a2a; margin:14px 0;">
+    <p style="font-size:2rem; font-weight:700; color:#62f5e5;">{{skills.length}}</p>
+    <p style="color:#888; font-size:0.85rem;">Technical Skills</p>
+  </div>
+{{/section}}

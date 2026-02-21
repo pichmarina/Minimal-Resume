@@ -1,0 +1,33 @@
+<div class="card">
+  <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#888; margin-bottom:14px;">Contact</p>
+
+  <p style="margin-bottom:10px;">
+    <span style="color:#888; font-size:0.8rem;">Email</span><br>
+    <a href="mailto:{{email}}">{{email}}</a>
+  </p>
+  <p style="margin-bottom:10px;">
+    <span style="color:#888; font-size:0.8rem;">Location</span><br>
+    {{location}}
+  </p>
+  <p style="margin-bottom:10px;">
+    <span style="color:#888; font-size:0.8rem;">GitHub</span><br>
+    <a href="https://{{github}}" target="_blank">{{github}}</a>
+  </p>
+  <p>
+    <span style="color:#888; font-size:0.8rem;">LinkedIn</span><br>
+    <a href="https://{{linkedin}}" target="_blank">{{linkedin}}</a>
+  </p>
+</div>
+
+{{#if openToWork}}
+  <div style="background: #0f1f08; border: 1px solid #4a7c20; border-radius:8px; padding:14px; margin-top:4px;">
+    <p style="color:#62f5e5; font-weight:500; font-size:0.9rem;">🟢 Open to Work</p>
+    <p style="color:#888; font-size:0.8rem; margin-top:4px;">Available for full-time roles</p>
+  </div>
+{{/if}}
+
+{{#unless availableForFreelance}}
+  <div style="background: #1f0a0a; border: 1px solid #7c2020; border-radius:8px; padding:14px; margin-top:10px;">
+    <p style="color:#ff6b6b; font-size:0.85rem;">🔴 Not taking freelance projects right now</p>
+  </div>
+{{/unless}}

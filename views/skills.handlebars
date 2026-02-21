@@ -1,0 +1,65 @@
+{{#section "styles"}}
+<style>
+  .skill-bar-track {
+    background: #2a2a2a;
+    border-radius: 4px;
+    height: 8px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    background: #62f5e5;
+    border-radius: 4px;
+  }
+  .skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+</style>
+{{/section}}
+
+<h2 class="section-title">Technical <span>Skills</span></h2>
+
+{{#if hasSkills}}
+  <div class="skill-grid">
+    {{#each skills}}
+      <div class="card" style="padding:18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <p style="font-weight:500;">{{this.name}}</p>
+          <span style="font-size:0.8rem; color:#888;">{{this.level}}/5</span>
+        </div>
+
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" style="width: {{skillBarWidth this.level}};"></div>
+        </div>
+
+        <p style="color:#888; font-size:0.75rem; margin-top:8px; text-transform:uppercase; letter-spacing:0.05em;">{{this.category}}</p>
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+  <p style="color:#888;">No skills listed yet.</p>
+{{/if}}
+
+{{#unless openToWork}}
+  <div class="card" style="margin-top:30px; border-color: #7c2020;">
+    <p style="color:#ff6b6b;">⚠️ Profile not currently active on job market.</p>
+  </div>
+{{/unless}}
+
+{{#section "sidebar"}}
+  {{> contact}}
+
+  <div class="card" style="margin-top:16px;">
+    <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:#888; margin-bottom:14px;">Skill Levels</p>
+    <div style="font-size:0.85rem; line-height:2; color:#aaa;">
+      <p><span style="color:#62f5e5; font-weight:600;">5/5</span> — Expert</p>
+      <p><span style="color:#62f5e5; font-weight:600;">4/5</span> — Advanced</p>
+      <p><span style="color:#62f5e5; font-weight:600;">3/5</span> — Proficient</p>
+      <p><span style="color:#62f5e5; font-weight:600;">2/5</span> — Familiar</p>
+      <p><span style="color:#62f5e5; font-weight:600;">1/5</span> — Learning</p>
+    </div>
+  </div>
+{{/section}}
